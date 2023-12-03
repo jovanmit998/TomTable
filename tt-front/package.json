@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "create-lib": "npx nx generate @nx/angular:library $LIB-NAME --directory=$DOMAIN"
   },
   "private": true,
   "dependencies": {
