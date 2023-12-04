@@ -21,6 +21,10 @@
       "@tt-front/auth/feature-login": ["libs/auth/feature-login/src/index.ts"],
       "@tt-front/auth/feature-register": [
         "libs/auth/feature-register/src/index.ts"
+      ],
+      "@tt-front/layout/shell-user": ["libs/layout/shell-user/src/index.ts"],
+      "@tt-front/layout/shell-visitor": [
+        "libs/layout/shell-visitor/src/index.ts"
       ]
     }
   },
