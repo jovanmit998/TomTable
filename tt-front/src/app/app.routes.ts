@@ -1,34 +1,19 @@
 import { Route } from '@angular/router';
-import { AppRouteConfig } from './app-routes.config';
 
 export const appRoutes: Route[] = [
   {
-    path: AppRouteConfig.login,
-    loadComponent: () =>
-      import('@tt-front/auth/feature-login').then(
-        (c) => c.FeatureLoginComponent
-      ),
-  },
-  {
-    path: AppRouteConfig.resetPassword,
-    loadComponent: () =>
-      import('@tt-front/auth/feature-forgot-password').then(
-        (c) => c.FeatureForgotPasswordComponent
-      ),
-  },
-  {
-    path: AppRouteConfig.register,
-    loadComponent: () =>
-      import('@tt-front/auth/feature-register').then(
-        (c) => c.FeatureRegisterComponent
-      ),
-  },
-  {
     path: '',
-    loadComponent: () =>
-      import('@tt-front/auth/feature-login').then(
-        (c) => c.FeatureLoginComponent
-      ),
-    pathMatch: 'full',
+    loadChildren: () => authCheck(false),
   },
 ];
+
+const authCheck = (isAuth: boolean) => {
+  return isAuth ? authenticatedRoutes : visitorRoutes;
+};
+
+const authenticatedRoutes = import('@tt-front/layout/shell-user').then(
+  (c) => c.shellUserRoutes
+);
+const visitorRoutes = import('@tt-front/layout/shell-visitor').then(
+  (c) => c.shellVisitorRoutes
+);

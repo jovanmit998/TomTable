@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'tt-layout-shell-visitor',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterOutlet],
   templateUrl: './shell-visitor.component.html',
   styleUrl: './shell-visitor.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
