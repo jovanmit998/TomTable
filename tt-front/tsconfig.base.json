@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@tt-front/auth/data-access": ["libs/auth/data-access/src/index.ts"],
       "@tt-front/auth/feature-forgot-password": [
         "libs/auth/feature-forgot-password/src/index.ts"
       ],
@@ -22,6 +23,8 @@
       "@tt-front/auth/feature-register": [
         "libs/auth/feature-register/src/index.ts"
       ],
+      "@tt-front/auth/store": ["libs/auth/store/src/index.ts"],
+      "@tt-front/auth/store/actions": ["libs/auth/store/actions/src/index.ts"],
       "@tt-front/layout/shell-user": ["libs/layout/shell-user/src/index.ts"],
       "@tt-front/layout/shell-visitor": [
         "libs/layout/shell-visitor/src/index.ts"
