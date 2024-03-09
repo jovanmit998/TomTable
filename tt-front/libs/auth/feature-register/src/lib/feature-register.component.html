@@ -1,1 +1,11 @@
-<p>auth-feature-register works!</p>
+<h1>Register</h1>
+<form [formGroup]="registerForm">
+  <label for="email">Email</label>
+  <input id="email" type="text" formControlName="email" name="email" />
+  <label for="username">Username</label>
+  <input id="username" type="text" formControlName="username" name="username" />
+  <label for="pass">Password</label>
+  <input id="pass" type="password" formControlName="password" name="password" />
+
+  <button (click)="register()">Register</button>
+</form>

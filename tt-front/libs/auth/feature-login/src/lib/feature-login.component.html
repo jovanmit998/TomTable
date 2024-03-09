@@ -1,9 +1,9 @@
 <h1>Login</h1>
 <form [formGroup]="loginForm">
-  <label for="emailUser">Email or username</label>
-  <input id="emailUser" type="text" formControlName="emailUsername" />
+  <label for="email">Email</label>
+  <input id="email" type="text" formControlName="email" name="email" />
   <label for="pass">Password</label>
-  <input id="pass" type="password" formControlName="password" />
+  <input id="pass" type="password" formControlName="password" name="password" />
 
   <button (click)="login()">Login</button>
 </form>

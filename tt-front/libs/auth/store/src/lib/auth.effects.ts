@@ -20,3 +20,20 @@ export const loginUser = createEffect(
   },
   { functional: true }
 );
+
+export const registerUser = createEffect(
+  (actions$ = inject(Actions), authResource = inject(AuthResource)) => {
+    return actions$.pipe(
+      ofType(authPageActions.register),
+      exhaustMap(({ email, username, password }) =>
+        authResource.registerUser(email, username, password).pipe(
+          map((status) => authApiActions.userRegistrationSuccess({ status })),
+          catchError((error) =>
+            of(authApiActions.userRegistrationFailure({ errorMsg: error }))
+          )
+        )
+      )
+    );
+  },
+  { functional: true }
+);

@@ -1,8 +1,9 @@
 import { createActionGroup, props } from '@ngrx/store';
 
 export const authPageActions = createActionGroup({
-  source: 'Login Page',
+  source: 'Auth Page',
   events: {
-    Login: props<{ username: string; password: string }>(),
+    Login: props<{ email: string; password: string }>(),
+    Register: props<{ email: string; username: string; password: string }>(),
   },
 });

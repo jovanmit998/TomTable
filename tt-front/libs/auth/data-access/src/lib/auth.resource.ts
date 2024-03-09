@@ -11,4 +11,16 @@ export class AuthResource {
   loginUser(): Observable<any> {
     return this.http.get('http://localhost:3000');
   }
+
+  registerUser(
+    email: string,
+    username: string,
+    password: string
+  ): Observable<any> {
+    return this.http.post('http://localhost:3000/register', {
+      email,
+      username,
+      password,
+    });
+  }
 }
