@@ -8,8 +8,12 @@ import { Observable } from 'rxjs';
 export class AuthResource {
   private readonly http = inject(HttpClient);
 
-  loginUser(): Observable<any> {
-    return this.http.get('http://localhost:3000');
+  loginUser(email: string, password: string): Observable<any> {
+    return this.http.post(
+      'http://localhost:3000/login',
+      { email, password },
+      { withCredentials: true }
+    );
   }
 
   registerUser(

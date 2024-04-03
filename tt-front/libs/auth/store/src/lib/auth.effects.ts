@@ -8,8 +8,8 @@ export const loginUser = createEffect(
   (actions$ = inject(Actions), authResource = inject(AuthResource)) => {
     return actions$.pipe(
       ofType(authPageActions.login),
-      exhaustMap(() =>
-        authResource.loginUser().pipe(
+      exhaustMap(({ email, password }) =>
+        authResource.loginUser(email, password).pipe(
           map((status) => authApiActions.userLoginSuccess({ status })),
           catchError((error) =>
             of(authApiActions.userLoginFailure({ errorMsg: error }))

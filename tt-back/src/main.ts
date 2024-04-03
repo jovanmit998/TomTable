@@ -2,16 +2,13 @@ import express from 'express';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import dotenv from 'dotenv/config';
 import { router } from './routes';
-import passport from 'passport';
 import session from 'express-session';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as passportConfig from './config/passport';
 
 // Temporary for localhost only
 const corsOptions = {
-  origin: '*',
+  origin: 'http://localhost:4200',
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -28,22 +25,21 @@ app.use(cors(corsOptions));
 const sessionStore = MongoStore.create({
   mongoUrl: process.env.DB_STRING,
   collectionName: 'users',
+  mongoOptions: { session },
 });
 
 app.use(
   session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: sessionStore,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      httpOnly: false,
     },
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(router);
 
